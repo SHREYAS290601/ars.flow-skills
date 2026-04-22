@@ -1,0 +1,90 @@
+{
+  "id": "skill-agent-regression-pack-generator",
+  "slug": "agent-regression-pack-generator",
+  "name": "Agent Regression Pack Generator",
+  "shortDescription": "Builds and validates regression case packs for agent behavior changes.",
+  "longDescription": "Generates structured evaluation cases for changed agent workflows and validates pack completeness for repeatable regression testing.",
+  "category": "test-first",
+  "categoryLabel": "Test-First Code Changes",
+  "tags": ["agent", "eval", "regression"],
+  "languages": ["JSON", "Markdown", "Python"],
+  "frameworks": ["LLM eval workflows"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["unit tests", "integration tests", "manual review required"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS AI",
+  "inputs": [
+    {
+      "name": "change_summary",
+      "type": "markdown",
+      "description": "Summary of behavior changes in agent workflow/prompt/tooling.",
+      "required": true
+    },
+    {
+      "name": "baseline_cases",
+      "type": "json",
+      "description": "Existing regression/evaluation cases.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "regression_pack",
+      "type": "json",
+      "description": "Structured test case pack ready for execution.",
+      "required": true
+    },
+    {
+      "name": "evaluation_plan",
+      "type": "markdown",
+      "description": "Execution strategy and pass/fail rules.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/validate_regression_pack.py",
+      "description": "Validates regression pack case schema and required fields."
+    },
+    {
+      "type": "reference",
+      "name": "references/case-schema.md",
+      "description": "Regression case schema specification."
+    },
+    {
+      "type": "reference",
+      "name": "references/coverage-mapping-guide.md",
+      "description": "Guide for mapping risk areas to regression case coverage."
+    }
+  ],
+  "idealUseCases": [
+    "Prompt/workflow regression protection",
+    "Agent release validation",
+    "CI behavior consistency checks"
+  ],
+  "failureModes": [
+    "Case packs may miss semantic edge conditions.",
+    "Risk-area mapping can be incomplete.",
+    "Pass criteria may be vague without explicit assertions."
+  ],
+  "examples": [
+    {
+      "title": "Tool-calling behavior update",
+      "summary": "Generates and validates regression cases for updated tool routing logic.",
+      "inputPreview": "baseline_cases.json + change_summary.md",
+      "outputPreview": "Validated regression pack with uncovered risk notes",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for agent regression pack generation."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

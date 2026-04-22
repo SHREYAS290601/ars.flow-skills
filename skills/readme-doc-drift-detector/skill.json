@@ -1,0 +1,84 @@
+{
+  "id": "skill-readme-doc-drift-detector",
+  "slug": "readme-doc-drift-detector",
+  "name": "README Doc Drift Detector",
+  "shortDescription": "Flags mismatches between documented commands and runnable project scripts.",
+  "longDescription": "Checks README command references against executable script definitions to prevent onboarding and operation drift.",
+  "category": "repo-workflows",
+  "categoryLabel": "Repo Workflow Bootstrap",
+  "tags": ["docs", "readme", "drift"],
+  "languages": ["Markdown", "JSON", "Python"],
+  "frameworks": ["npm"],
+  "reliabilityLevel": "medium",
+  "verificationTypes": ["static analysis", "manual review required"],
+  "riskLevel": "low",
+  "version": "0.1.0",
+  "author": "ARS Docs",
+  "inputs": [
+    {
+      "name": "readme",
+      "type": "markdown",
+      "description": "README command and setup instructions.",
+      "required": true
+    },
+    {
+      "name": "scripts_manifest",
+      "type": "json",
+      "description": "Executable script definition source (e.g., package.json scripts).",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "doc_drift_report",
+      "type": "markdown",
+      "description": "Drift findings and remediation actions.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/check_readme_scripts.py",
+      "description": "Compares documented npm commands against package.json scripts."
+    },
+    {
+      "type": "reference",
+      "name": "references/readme-command-format.md",
+      "description": "Standard README command formatting guidance."
+    },
+    {
+      "type": "reference",
+      "name": "references/drift-severity-policy.md",
+      "description": "Severity policy for documentation drift findings."
+    }
+  ],
+  "idealUseCases": [
+    "Onboarding doc quality checks",
+    "Release readiness documentation audits",
+    "CI documentation consistency gates"
+  ],
+  "failureModes": [
+    "Command extraction can miss non-standard formatting.",
+    "Aliases may appear as false drift without normalization.",
+    "Non-npm toolchains need additional adapters."
+  ],
+  "examples": [
+    {
+      "title": "README script drift check",
+      "summary": "Detects stale command references after script renaming.",
+      "inputPreview": "README.md + package.json",
+      "outputPreview": "1 stale command and 1 undocumented executable",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for README command drift detection."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

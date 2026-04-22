@@ -1,0 +1,90 @@
+{
+  "id": "skill-api-contract-diff-checker",
+  "slug": "api-contract-diff-checker",
+  "name": "API Contract Diff Checker",
+  "shortDescription": "Flags backward-incompatible API contract changes before merge.",
+  "longDescription": "Compares old/new API specifications and produces deterministic breaking-change reports suitable for CI and release gates.",
+  "category": "structured-output",
+  "categoryLabel": "Structured Output & Schema Enforcement",
+  "tags": ["api", "openapi", "compatibility"],
+  "languages": ["JSON", "Python"],
+  "frameworks": ["OpenAPI"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["schema validation", "manual review required"],
+  "riskLevel": "high",
+  "version": "0.1.0",
+  "author": "ARS API",
+  "inputs": [
+    {
+      "name": "old_contract",
+      "type": "json",
+      "description": "Previous stable API specification.",
+      "required": true
+    },
+    {
+      "name": "new_contract",
+      "type": "json",
+      "description": "Proposed updated API specification.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "contract_diff_report",
+      "type": "markdown",
+      "description": "Human-readable summary of contract changes.",
+      "required": true
+    },
+    {
+      "name": "breaking_changes",
+      "type": "json",
+      "description": "Machine-readable breaking change list.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/compare_openapi.py",
+      "description": "Compares OpenAPI path/method surfaces and flags deterministic breaking changes."
+    },
+    {
+      "type": "reference",
+      "name": "references/breaking-change-rules.md",
+      "description": "Ruleset for classifying contract diffs as breaking or non-breaking."
+    },
+    {
+      "type": "reference",
+      "name": "references/versioning-guidance.md",
+      "description": "Version bump guidance for breaking API revisions."
+    }
+  ],
+  "idealUseCases": [
+    "OpenAPI pull request checks",
+    "Release compatibility gates",
+    "SDK stability reviews"
+  ],
+  "failureModes": [
+    "Spec drift from runtime behavior can hide real breakage.",
+    "Complex schema changes may require manual semantic review.",
+    "Policy exceptions can reduce reliability if overused."
+  ],
+  "examples": [
+    {
+      "title": "User endpoint contract update",
+      "summary": "Detects deleted method and required request field addition.",
+      "inputPreview": "old_openapi.json + new_openapi.json",
+      "outputPreview": "2 breaking changes and version bump recommendation",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for deterministic API compatibility diffing."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

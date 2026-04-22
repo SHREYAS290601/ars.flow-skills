@@ -1,0 +1,84 @@
+{
+  "id": "skill-incident-timeline-builder",
+  "slug": "incident-timeline-builder",
+  "name": "Incident Timeline Builder",
+  "shortDescription": "Builds ordered incident timelines from multi-source evidence.",
+  "longDescription": "Normalizes and orders incident events from logs/alerts/changes into timeline artifacts for debugging and post-incident review.",
+  "category": "debug-triage",
+  "categoryLabel": "Debugging & Incident Triage",
+  "tags": ["incident", "timeline", "debug"],
+  "languages": ["JSON", "Text", "Python"],
+  "frameworks": ["SRE workflows"],
+  "reliabilityLevel": "medium",
+  "verificationTypes": ["reconciliation checks", "manual review required"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS SRE",
+  "inputs": [
+    {
+      "name": "incident_events",
+      "type": "json",
+      "description": "Timestamped event records from relevant systems.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "incident_timeline",
+      "type": "markdown",
+      "description": "Chronological incident narrative.",
+      "required": true
+    },
+    {
+      "name": "incident_timeline_json",
+      "type": "json",
+      "description": "Machine-readable ordered timeline.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/build_timeline.py",
+      "description": "Parses and sorts timestamped events into deterministic timeline order."
+    },
+    {
+      "type": "reference",
+      "name": "references/event-schema.md",
+      "description": "Schema for timeline event input records."
+    },
+    {
+      "type": "reference",
+      "name": "references/timeline-quality-checks.md",
+      "description": "Quality checks for complete, reviewable incident timelines."
+    }
+  ],
+  "idealUseCases": [
+    "Incident retrospectives",
+    "Root-cause chronology reconstruction",
+    "On-call handoff summaries"
+  ],
+  "failureModes": [
+    "Timezone parsing errors can reorder events.",
+    "Incomplete event feeds reduce timeline trustworthiness.",
+    "Unlabeled events increase interpretation ambiguity."
+  ],
+  "examples": [
+    {
+      "title": "Checkout incident timeline",
+      "summary": "Converts mixed alert and log records into ordered chronology.",
+      "inputPreview": "events.json",
+      "outputPreview": "Ordered timeline with deploy/error/mitigation checkpoints",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for incident timeline generation."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

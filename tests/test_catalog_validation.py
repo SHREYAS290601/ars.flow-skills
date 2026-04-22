@@ -27,7 +27,7 @@ class CatalogValidationTests(unittest.TestCase):
         )
 
         self.assertEqual(registry["generatedAt"], "2026-04-22T00:00:00Z")
-        self.assertEqual(len(registry["skills"]), 8)
+        self.assertEqual(len(registry["skills"]), 16)
 
         sample = registry["skills"][0]
         self.assertTrue(sample["sourceUrl"].startswith("http://localhost:3000/skills/"))

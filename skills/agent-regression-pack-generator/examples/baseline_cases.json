@@ -1,0 +1,7 @@
+[
+  {
+    "id": "case-routing-001",
+    "input": "User asks for SQL migration plan",
+    "expected": "planner_tool"
+  }
+]

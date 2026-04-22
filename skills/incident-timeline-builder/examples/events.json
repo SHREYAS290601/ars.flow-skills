@@ -1,0 +1,5 @@
+[
+  {"timestamp": "2026-04-22T14:20:00Z", "source": "deploy", "event": "checkout-service rollout started"},
+  {"timestamp": "2026-04-22T14:21:03Z", "source": "logs", "event": "db pool exhausted"},
+  {"timestamp": "2026-04-22T14:21:12Z", "source": "alerts", "event": "error rate exceeded threshold"}
+]

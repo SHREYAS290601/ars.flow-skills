@@ -1,0 +1,90 @@
+{
+  "id": "skill-migration-dry-run-planner",
+  "slug": "migration-dry-run-planner",
+  "name": "Migration Dry-Run Planner",
+  "shortDescription": "Generates dry-run and rollback-aware migration execution plans.",
+  "longDescription": "Builds deterministic migration plans with preflight, dry-run, rollback, and validation checkpoints before production execution.",
+  "category": "migrations",
+  "categoryLabel": "Migrations & Rollback Safety",
+  "tags": ["migration", "dry-run", "rollback"],
+  "languages": ["SQL", "Markdown"],
+  "frameworks": ["Alembic", "Flyway"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["integration tests", "manual review required"],
+  "riskLevel": "high",
+  "version": "0.1.0",
+  "author": "ARS Ops",
+  "inputs": [
+    {
+      "name": "migration_request",
+      "type": "markdown",
+      "description": "Requested migration description and objectives.",
+      "required": true
+    },
+    {
+      "name": "environment_context",
+      "type": "markdown",
+      "description": "Environment constraints and deployment windows.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "dry_run_plan",
+      "type": "markdown",
+      "description": "Stepwise staged migration plan with dry-run steps.",
+      "required": true
+    },
+    {
+      "name": "rollback_plan",
+      "type": "markdown",
+      "description": "Rollback actions and abort criteria.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/validate_dry_run_plan.py",
+      "description": "Validates that dry-run plans include mandatory safety sections."
+    },
+    {
+      "type": "reference",
+      "name": "references/dry-run-checklist.md",
+      "description": "Checklist for dry-run readiness and evidence capture."
+    },
+    {
+      "type": "reference",
+      "name": "references/rollback-query-template.md",
+      "description": "Template queries for rollback and data validation."
+    }
+  ],
+  "idealUseCases": [
+    "Production DB change planning",
+    "Release readiness reviews",
+    "Rollback-safe change management"
+  ],
+  "failureModes": [
+    "Unverified assumptions in dry-run environments.",
+    "Rollback steps missing ownership or timing constraints.",
+    "Post-run verification coverage too narrow."
+  ],
+  "examples": [
+    {
+      "title": "Orders table migration dry-run",
+      "summary": "Builds phased dry-run with validation queries and rollback triggers.",
+      "inputPreview": "migration_request.md + rollback constraints",
+      "outputPreview": "Dry-run and rollback plan with required checkpoints",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for migration dry-run planning workflow."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

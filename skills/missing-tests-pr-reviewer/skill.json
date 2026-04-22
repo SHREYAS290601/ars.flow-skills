@@ -1,0 +1,84 @@
+{
+  "id": "skill-missing-tests-pr-reviewer",
+  "slug": "missing-tests-pr-reviewer",
+  "name": "Missing Tests PR Reviewer",
+  "shortDescription": "Flags code changes that likely require but lack corresponding tests.",
+  "longDescription": "Maps changed production files to expected test files and reports likely missing test coverage before merge.",
+  "category": "test-first",
+  "categoryLabel": "Test-First Code Changes",
+  "tags": ["tests", "pr", "coverage"],
+  "languages": ["Text", "Python"],
+  "frameworks": ["Pytest", "Vitest"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["unit tests", "static analysis"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS QA",
+  "inputs": [
+    {
+      "name": "changed_files",
+      "type": "text",
+      "description": "List of changed source files from PR.",
+      "required": true
+    },
+    {
+      "name": "test_files",
+      "type": "text",
+      "description": "Discovered test files in repository.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "missing_tests_report",
+      "type": "markdown",
+      "description": "Potential missing test coverage findings.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/detect_missing_tests.py",
+      "description": "Maps changed source files to expected test filenames and flags gaps."
+    },
+    {
+      "type": "reference",
+      "name": "references/test-mapping-rules.md",
+      "description": "Heuristics for mapping source paths to expected test files."
+    },
+    {
+      "type": "reference",
+      "name": "references/exemption-policy.md",
+      "description": "Rules for documenting justified test-gap exemptions."
+    }
+  ],
+  "idealUseCases": [
+    "PR automation quality gates",
+    "Reviewer assistance for regression prevention",
+    "Coverage expectation enforcement"
+  ],
+  "failureModes": [
+    "Heuristic mapping may miss non-standard test organization.",
+    "Shared integration tests may satisfy coverage implicitly.",
+    "Excess false positives can reduce reviewer trust."
+  ],
+  "examples": [
+    {
+      "title": "Service change missing test",
+      "summary": "Detects changed source file without corresponding test update.",
+      "inputPreview": "changed_files.txt + test_files.txt",
+      "outputPreview": "1 missing expected test file",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for missing-test detection in PR reviews."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

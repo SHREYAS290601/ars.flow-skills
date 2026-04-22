@@ -1,0 +1,90 @@
+{
+  "id": "skill-dependency-upgrade-risk-review",
+  "slug": "dependency-upgrade-risk-review",
+  "name": "Dependency Upgrade Risk Review",
+  "shortDescription": "Classifies dependency upgrade risk and recommends regression focus areas.",
+  "longDescription": "Analyzes version-change diffs and provides deterministic risk classification plus test focus guidance for safer upgrades.",
+  "category": "pr-risk",
+  "categoryLabel": "PR Review & Change Risk",
+  "tags": ["dependencies", "upgrade", "risk"],
+  "languages": ["JSON", "Python"],
+  "frameworks": ["npm", "pip"],
+  "reliabilityLevel": "medium",
+  "verificationTypes": ["static analysis", "manual review required"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS Platform",
+  "inputs": [
+    {
+      "name": "before_dependencies",
+      "type": "json",
+      "description": "Baseline dependency manifest.",
+      "required": true
+    },
+    {
+      "name": "after_dependencies",
+      "type": "json",
+      "description": "Updated dependency manifest.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "upgrade_risk_report",
+      "type": "markdown",
+      "description": "Risk classification by dependency change.",
+      "required": true
+    },
+    {
+      "name": "test_focus_plan",
+      "type": "markdown",
+      "description": "Recommended regression test focus for upgrades.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/dependency_diff_risk.py",
+      "description": "Classifies risk by semantic version delta between manifests."
+    },
+    {
+      "type": "reference",
+      "name": "references/risk-matrix.md",
+      "description": "Dependency upgrade risk matrix and escalation criteria."
+    },
+    {
+      "type": "reference",
+      "name": "references/test-focus-template.md",
+      "description": "Template for targeted regression planning after upgrades."
+    }
+  ],
+  "idealUseCases": [
+    "Major dependency upgrades",
+    "Batch version refreshes",
+    "Release-readiness dependency reviews"
+  ],
+  "failureModes": [
+    "Semver can misrepresent true behavior changes.",
+    "Transitive dependency shifts may be underreported.",
+    "Missing changelog context weakens triage quality."
+  ],
+  "examples": [
+    {
+      "title": "Framework major upgrade review",
+      "summary": "Flags major runtime and framework upgrades for high-risk gating.",
+      "inputPreview": "before_package.json + after_package.json",
+      "outputPreview": "High-risk finding with regression test focus plan",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for dependency upgrade risk classification."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

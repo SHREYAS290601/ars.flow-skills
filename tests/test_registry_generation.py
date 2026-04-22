@@ -28,7 +28,7 @@ class RegistryGenerationTests(unittest.TestCase):
             self.assertTrue(output.exists())
             parsed = json.loads(output.read_text(encoding="utf-8"))
             self.assertEqual(parsed["generatedAt"], "2026-04-22T00:00:00Z")
-            self.assertGreaterEqual(len(parsed["skills"]), 8)
+            self.assertGreaterEqual(len(parsed["skills"]), 16)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,84 @@
+{
+  "id": "skill-secrets-config-sanity-check",
+  "slug": "secrets-config-sanity-check",
+  "name": "Secrets Config Sanity Check",
+  "shortDescription": "Detects missing config keys and unsafe default values before deployment.",
+  "longDescription": "Checks required environment/config keys and flags dangerous defaults for deterministic pre-deploy safety gates.",
+  "category": "security-review",
+  "categoryLabel": "Security Review & Secure Defaults",
+  "tags": ["secrets", "config", "security"],
+  "languages": ["Env", "YAML", "Python"],
+  "frameworks": ["12-factor", "Kubernetes"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["static analysis", "manual review required"],
+  "riskLevel": "high",
+  "version": "0.1.0",
+  "author": "ARS Security",
+  "inputs": [
+    {
+      "name": "env_example",
+      "type": "text",
+      "description": "Required environment keys and baseline defaults.",
+      "required": true
+    },
+    {
+      "name": "target_config",
+      "type": "text",
+      "description": "Target deployment configuration values.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "config_sanity_report",
+      "type": "markdown",
+      "description": "Summary of missing and unsafe config findings.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/scan_env_sanity.py",
+      "description": "Checks required keys and unsafe default values from env/config files."
+    },
+    {
+      "type": "reference",
+      "name": "references/required-keys-policy.md",
+      "description": "Policy for required runtime configuration key management."
+    },
+    {
+      "type": "reference",
+      "name": "references/unsafe-defaults-list.md",
+      "description": "List of insecure default patterns to block in deployment configs."
+    }
+  ],
+  "idealUseCases": [
+    "Pre-deploy configuration checks",
+    "Service onboarding security reviews",
+    "Production readiness gates"
+  ],
+  "failureModes": [
+    "Configuration requirements may drift from runtime expectations.",
+    "Platform-injected secrets can be falsely flagged as missing.",
+    "Environment-specific exemptions need explicit documentation."
+  ],
+  "examples": [
+    {
+      "title": "Production env preflight",
+      "summary": "Finds missing API key and dangerous debug default.",
+      "inputPreview": ".env.example + .env.prod",
+      "outputPreview": "2 fails with remediation guidance",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for configuration sanity validation."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}
