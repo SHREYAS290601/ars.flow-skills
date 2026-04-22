@@ -1,0 +1,9 @@
+{
+  "table": "orders",
+  "row_count": 450120,
+  "duplicate_rows": 0,
+  "checksums": {
+    "order_total": "abc999",
+    "customer_id": "def456"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "files_changed": 42,
+  "lines_added": 1250,
+  "lines_deleted": 650,
+  "touches_security_paths": true,
+  "touches_migration_paths": true,
+  "new_tests_added": 3
+}

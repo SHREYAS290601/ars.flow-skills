@@ -1,0 +1,6 @@
+{
+  "order_id": "ord_123",
+  "status": "pending_review",
+  "amount": 49.5,
+  "debug": "trace"
+}

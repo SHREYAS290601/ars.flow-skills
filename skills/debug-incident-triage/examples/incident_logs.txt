@@ -1,0 +1,5 @@
+2026-04-22T14:21:01Z ERROR checkout timeout while waiting for db connection
+2026-04-22T14:21:03Z ERROR checkout timeout while waiting for db connection
+2026-04-22T14:21:12Z ERROR database pool exhausted for checkout-service
+2026-04-22T14:21:17Z ERROR checkout timeout while waiting for db connection
+2026-04-22T14:21:22Z WARN retrying payment authorization due to timeout

@@ -1,0 +1,13 @@
+{
+  "required_fields": ["order_id", "status", "timestamp"],
+  "field_types": {
+    "order_id": "string",
+    "status": "string",
+    "timestamp": "string",
+    "amount": "number"
+  },
+  "allowed_values": {
+    "status": ["processing", "shipped", "cancelled"]
+  },
+  "forbidden_fields": ["debug"]
+}

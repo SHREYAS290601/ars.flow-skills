@@ -1,0 +1,85 @@
+{
+  "id": "skill-secure-endpoint-review",
+  "slug": "secure-endpoint-review",
+  "name": "Secure Endpoint Review",
+  "shortDescription": "Applies secure-default checks to API endpoints before merge.",
+  "longDescription": "Combines static checks and manual review to enforce auth, validation, and data-handling controls in endpoint implementations.",
+  "category": "security-review",
+  "categoryLabel": "Security Review & Secure Defaults",
+  "tags": ["security", "api", "auth"],
+  "languages": ["Python", "TypeScript"],
+  "frameworks": ["FastAPI", "Express"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["static analysis", "manual review required"],
+  "riskLevel": "high",
+  "version": "0.1.0",
+  "author": "ARS Security",
+  "inputs": [
+    {
+      "name": "endpoint_code",
+      "type": "code",
+      "description": "Handler and middleware code for reviewed endpoint.",
+      "required": true
+    },
+    {
+      "name": "auth_policy",
+      "type": "markdown",
+      "description": "Role and permission requirements for endpoint access.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "security_findings",
+      "type": "markdown",
+      "description": "Severity-ranked findings and remediation guidance.",
+      "required": true
+    },
+    {
+      "name": "secure_patch",
+      "type": "diff",
+      "description": "Patch implementing required security changes.",
+      "required": false
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/scan_fastapi_route.py",
+      "description": "Performs basic static scans for missing auth and weak validation."
+    },
+    {
+      "type": "reference",
+      "name": "references/review-template.md",
+      "description": "Standardized security review output template."
+    }
+  ],
+  "idealUseCases": [
+    "New API endpoint reviews",
+    "Authentication refactors",
+    "PII-handling service changes"
+  ],
+  "failureModes": [
+    "Context-specific abuse cases are missed by static checks.",
+    "Policy ambiguity leads to inconsistent authorization controls.",
+    "Fixes may break backward compatibility if not staged carefully."
+  ],
+  "examples": [
+    {
+      "title": "Invoice endpoint auth hardening",
+      "summary": "Detected missing role check and unsafe error detail leakage.",
+      "inputPreview": "FastAPI route + policy matrix",
+      "outputPreview": "2 high findings and patch recommendations",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for endpoint security review workflow."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "skill-json-schema-enforcer",
+  "slug": "json-schema-enforcer",
+  "name": "JSON Schema Enforcer",
+  "shortDescription": "Enforces strict JSON contracts for machine-consumed outputs.",
+  "longDescription": "Validates AI-generated JSON against explicit contracts with deterministic checks for required keys, type safety, allowed values, and forbidden fields.",
+  "category": "structured-output",
+  "categoryLabel": "Structured Output & Schema Enforcement",
+  "tags": ["json", "schema", "validation"],
+  "languages": ["JSON", "Python"],
+  "frameworks": ["Custom contract checker"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["schema validation", "lint/type checks"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS Labs",
+  "inputs": [
+    {
+      "name": "contract_definition",
+      "type": "json",
+      "description": "Required fields, expected types, allowed values, and forbidden fields.",
+      "required": true
+    },
+    {
+      "name": "candidate_output",
+      "type": "json",
+      "description": "Generated JSON to validate.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "validated_output",
+      "type": "json",
+      "description": "JSON payload that passes all contract checks.",
+      "required": true
+    },
+    {
+      "name": "validation_report",
+      "type": "markdown",
+      "description": "Deterministic list of schema violations and fixes.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/assert_contract.py",
+      "description": "Validates JSON output against a lightweight contract spec."
+    },
+    {
+      "type": "reference",
+      "name": "references/contract-format.md",
+      "description": "Defines the contract JSON format used by the validator."
+    }
+  ],
+  "idealUseCases": [
+    "Agent output for API calls",
+    "Structured tool invocation payloads",
+    "Automated compliance checks for JSON responses"
+  ],
+  "failureModes": [
+    "Semantically incorrect values can still pass if contract is incomplete.",
+    "Nested object constraints are limited in the lightweight checker.",
+    "Human review is still needed for business-rule correctness."
+  ],
+  "examples": [
+    {
+      "title": "Order status payload validation",
+      "summary": "Rejects unexpected enum values and missing required keys.",
+      "inputPreview": "contract.json + candidate_fail.json",
+      "outputPreview": "3 deterministic failures with field paths",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release with deterministic contract checks."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

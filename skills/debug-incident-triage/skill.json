@@ -1,0 +1,80 @@
+{
+  "id": "skill-debug-incident-triage",
+  "slug": "debug-incident-triage",
+  "name": "Debug Incident Triage",
+  "shortDescription": "Clusters incident signals into ranked, testable hypotheses.",
+  "longDescription": "Structures incident debugging by grouping recurring log signatures and producing prioritized next-step diagnostics for on-call teams.",
+  "category": "debug-triage",
+  "categoryLabel": "Debugging & Incident Triage",
+  "tags": ["incident", "debugging", "oncall"],
+  "languages": ["Text", "Python"],
+  "frameworks": ["Log pipelines"],
+  "reliabilityLevel": "medium",
+  "verificationTypes": ["reconciliation checks", "manual review required"],
+  "riskLevel": "high",
+  "version": "0.1.0",
+  "author": "ARS SRE",
+  "inputs": [
+    {
+      "name": "incident_logs",
+      "type": "text",
+      "description": "Error and warning events collected during incident window.",
+      "required": true
+    },
+    {
+      "name": "service_context",
+      "type": "markdown",
+      "description": "Deployment topology and dependency context.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "triage_report",
+      "type": "markdown",
+      "description": "Ranked hypotheses with evidence and confidence.",
+      "required": true
+    },
+    {
+      "name": "next_checks",
+      "type": "markdown",
+      "description": "Ordered diagnostic checks with command-level specificity.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/cluster_log_signatures.py",
+      "description": "Groups recurring error signatures by normalized log message."
+    }
+  ],
+  "idealUseCases": [
+    "On-call incident triage",
+    "CI failure clustering",
+    "Runtime outage diagnostics"
+  ],
+  "failureModes": [
+    "Insufficient telemetry leads to incorrect hypotheses.",
+    "Clustered messages may merge distinct root causes.",
+    "Human triage quality varies under incident pressure."
+  ],
+  "examples": [
+    {
+      "title": "Checkout API timeout incident",
+      "summary": "Clusters timeout and DB connection errors into prioritized hypotheses.",
+      "inputPreview": "incident logs + recent deploy list",
+      "outputPreview": "Top hypothesis: DB pool exhaustion after rollout",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for incident triage workflow."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

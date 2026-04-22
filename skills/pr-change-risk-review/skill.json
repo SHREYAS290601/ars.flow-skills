@@ -1,0 +1,80 @@
+{
+  "id": "skill-pr-change-risk-review",
+  "slug": "pr-change-risk-review",
+  "name": "PR Change Risk Review",
+  "shortDescription": "Scores pull request risk and enforces mitigation checkpoints.",
+  "longDescription": "Provides deterministic risk scoring from diff metadata, then links high-risk changes to explicit mitigation and approval requirements.",
+  "category": "pr-risk",
+  "categoryLabel": "PR Review & Change Risk",
+  "tags": ["pr", "risk", "review"],
+  "languages": ["Markdown", "JSON"],
+  "frameworks": ["GitHub", "CI"],
+  "reliabilityLevel": "medium",
+  "verificationTypes": ["static analysis", "manual review required"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS Labs",
+  "inputs": [
+    {
+      "name": "diff_stats",
+      "type": "json",
+      "description": "PR change metrics and touched file inventory.",
+      "required": true
+    },
+    {
+      "name": "change_context",
+      "type": "markdown",
+      "description": "Operational context and rollout plan.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "risk_report",
+      "type": "markdown",
+      "description": "Severity score with evidence and rationale.",
+      "required": true
+    },
+    {
+      "name": "mitigation_checklist",
+      "type": "markdown",
+      "description": "Required safeguards before merge or deploy.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/score_risk.py",
+      "description": "Computes deterministic risk score from diff metrics."
+    }
+  ],
+  "idealUseCases": [
+    "Large pull request triage",
+    "Release-risk gating",
+    "Shared-service code review"
+  ],
+  "failureModes": [
+    "Heuristic scoring may miss nuanced business risk.",
+    "Teams may override scores without strong evidence.",
+    "Diff statistics can underrepresent runtime behavior changes."
+  ],
+  "examples": [
+    {
+      "title": "Payment data-layer refactor",
+      "summary": "Escalates to high risk due to critical paths and high churn.",
+      "inputPreview": "diff_stats.json + rollout context",
+      "outputPreview": "Risk score 8/10 with mitigation checklist",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for PR change-risk scoring workflow."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

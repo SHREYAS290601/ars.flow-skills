@@ -1,0 +1,80 @@
+{
+  "id": "skill-repo-workflow-bootstrap",
+  "slug": "repo-workflow-bootstrap",
+  "name": "Repo Workflow Bootstrap",
+  "shortDescription": "Standardizes local and CI command contracts for repositories.",
+  "longDescription": "Introduces deterministic build/test workflow baselines and validates required files for maintainable engineering operations.",
+  "category": "repo-workflows",
+  "categoryLabel": "Repo Workflow Bootstrap",
+  "tags": ["ci", "onboarding", "tooling"],
+  "languages": ["Shell", "YAML"],
+  "frameworks": ["GitHub Actions", "Make"],
+  "reliabilityLevel": "medium",
+  "verificationTypes": ["lint/type checks", "manual review required"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS Platform",
+  "inputs": [
+    {
+      "name": "repo_layout",
+      "type": "markdown",
+      "description": "Current repository tooling and command surface.",
+      "required": true
+    },
+    {
+      "name": "required_checks",
+      "type": "markdown",
+      "description": "Quality gate expectations for merge readiness.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "workflow_plan",
+      "type": "markdown",
+      "description": "Canonical command contract and CI flow.",
+      "required": true
+    },
+    {
+      "name": "bootstrap_patch",
+      "type": "diff",
+      "description": "Patch to add scripts/config for workflow baseline.",
+      "required": false
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/verify_pipeline_files.py",
+      "description": "Checks for expected CI and command contract files."
+    }
+  ],
+  "idealUseCases": [
+    "New project onboarding",
+    "Legacy repo modernization",
+    "Engineering standards rollout"
+  ],
+  "failureModes": [
+    "Bootstrap plan misses language-specific build requirements.",
+    "CI checks diverge from local scripts over time.",
+    "Required files exist but do not enforce correct behavior."
+  ],
+  "examples": [
+    {
+      "title": "Legacy service CI baseline",
+      "summary": "Introduces canonical lint/test/build workflow and verification checks.",
+      "inputPreview": "Repo inventory + CI requirements",
+      "outputPreview": "Workflow plan and required file checklist",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for repository workflow bootstrap."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

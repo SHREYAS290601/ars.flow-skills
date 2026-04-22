@@ -1,0 +1,74 @@
+{
+  "id": "skill-etl-reconciliation-check",
+  "slug": "etl-reconciliation-check",
+  "name": "ETL Reconciliation Check",
+  "shortDescription": "Detects ETL drift using row-count and checksum reconciliation.",
+  "longDescription": "Compares source and target ETL summaries with deterministic checks to catch data-loss and transformation drift before release.",
+  "category": "etl-validation",
+  "categoryLabel": "ETL & Data Validation",
+  "tags": ["etl", "data-quality", "reconciliation"],
+  "languages": ["SQL", "Python"],
+  "frameworks": ["Airflow", "dbt"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["reconciliation checks", "integration tests"],
+  "riskLevel": "high",
+  "version": "0.1.0",
+  "author": "ARS Data",
+  "inputs": [
+    {
+      "name": "source_summary",
+      "type": "json",
+      "description": "Source dataset counts, duplicates, and checksums.",
+      "required": true
+    },
+    {
+      "name": "target_summary",
+      "type": "json",
+      "description": "Target dataset counts, duplicates, and checksums.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "reconciliation_report",
+      "type": "markdown",
+      "description": "Deterministic report of count and checksum mismatches.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/reconcile_summaries.py",
+      "description": "Compares source and target summary JSON metrics."
+    }
+  ],
+  "idealUseCases": [
+    "Warehouse ingestion validation",
+    "Migration data cutovers",
+    "Batch data quality gates"
+  ],
+  "failureModes": [
+    "Summary files exclude key business dimensions.",
+    "Tolerance configuration is too permissive.",
+    "Mismatch triage is delayed and blocks release timelines."
+  ],
+  "examples": [
+    {
+      "title": "Daily orders ETL reconciliation",
+      "summary": "Flags checksum mismatch despite matching row counts.",
+      "inputPreview": "source_summary.json + target_summary.json",
+      "outputPreview": "FAIL with checksum discrepancy on order_total",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for deterministic ETL reconciliation."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

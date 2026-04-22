@@ -1,0 +1,80 @@
+{
+  "id": "skill-migration-rollback-safety",
+  "slug": "migration-rollback-safety",
+  "name": "Migration Rollback Safety",
+  "shortDescription": "Builds migration runbooks with explicit rollback criteria.",
+  "longDescription": "Defines preflight and rollback-safe migration execution with deterministic gating and ownership for production-impacting changes.",
+  "category": "migrations",
+  "categoryLabel": "Migrations & Rollback Safety",
+  "tags": ["migration", "rollback", "database"],
+  "languages": ["SQL", "Shell", "Markdown"],
+  "frameworks": ["Alembic", "Flyway"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["integration tests", "manual review required", "reconciliation checks"],
+  "riskLevel": "high",
+  "version": "0.1.0",
+  "author": "ARS Ops",
+  "inputs": [
+    {
+      "name": "migration_plan",
+      "type": "markdown",
+      "description": "Forward migration steps and assumptions.",
+      "required": true
+    },
+    {
+      "name": "rollback_constraints",
+      "type": "markdown",
+      "description": "Operational limits and rollback expectations.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "safe_runbook",
+      "type": "markdown",
+      "description": "Preflight checks, staged execution, and rollback procedure.",
+      "required": true
+    },
+    {
+      "name": "rollback_matrix",
+      "type": "markdown",
+      "description": "Trigger thresholds with owner assignment.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/check_migration_plan.py",
+      "description": "Checks that migration plans include preflight and rollback sections."
+    }
+  ],
+  "idealUseCases": [
+    "Production schema migrations",
+    "High-risk config rollouts",
+    "Data-platform change management"
+  ],
+  "failureModes": [
+    "Undocumented side effects invalidate rollback assumptions.",
+    "No rollback rehearsal in staging.",
+    "Operational ownership gaps during rollback execution."
+  ],
+  "examples": [
+    {
+      "title": "Orders table phased migration",
+      "summary": "Two-phase rollout with shadow writes and rollback guardrails.",
+      "inputPreview": "migration plan + rollback constraints",
+      "outputPreview": "Runbook with abort thresholds and owner matrix",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for rollback-safe migration planning."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}

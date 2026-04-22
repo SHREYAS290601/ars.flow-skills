@@ -1,0 +1,80 @@
+{
+  "id": "skill-test-first-change-guardrail",
+  "slug": "test-first-change-guardrail",
+  "name": "Test-First Change Guardrail",
+  "shortDescription": "Forces failing-test-first delivery for reliable code changes.",
+  "longDescription": "Encodes a deterministic red-green workflow for behavior-changing code updates and requires regression evidence before merge.",
+  "category": "test-first",
+  "categoryLabel": "Test-First Code Changes",
+  "tags": ["testing", "regression", "quality"],
+  "languages": ["TypeScript", "Python"],
+  "frameworks": ["Vitest", "Pytest"],
+  "reliabilityLevel": "high",
+  "verificationTypes": ["unit tests", "integration tests"],
+  "riskLevel": "medium",
+  "version": "0.1.0",
+  "author": "ARS Labs",
+  "inputs": [
+    {
+      "name": "change_request",
+      "type": "markdown",
+      "description": "Bug report or feature acceptance criteria.",
+      "required": true
+    },
+    {
+      "name": "existing_tests",
+      "type": "code",
+      "description": "Current tests near impacted behavior.",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "failing_test_patch",
+      "type": "diff",
+      "description": "Test updates that fail before implementation.",
+      "required": true
+    },
+    {
+      "name": "verification_log",
+      "type": "text",
+      "description": "Execution evidence that updated and regression tests pass.",
+      "required": true
+    }
+  ],
+  "includedAssets": [
+    {
+      "type": "script",
+      "name": "scripts/check_test_plan.py",
+      "description": "Validates test-first plan sections."
+    }
+  ],
+  "idealUseCases": [
+    "Critical bug fixes",
+    "Behavioral feature updates",
+    "High-risk pull requests"
+  ],
+  "failureModes": [
+    "Tests created after implementation hide root cause.",
+    "Regression suite misses neighboring modules.",
+    "Plans skip explicit baseline behavior capture."
+  ],
+  "examples": [
+    {
+      "title": "Tax rounding bug fix",
+      "summary": "Captures off-by-one cent failure before changing calculator logic.",
+      "inputPreview": "Bug report + failing unit test",
+      "outputPreview": "Passing focused tests + full regression log",
+      "validated": true
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.1.0",
+      "date": "2026-04-22T00:00:00.000Z",
+      "summary": "Initial release for deterministic test-first workflows."
+    }
+  ],
+  "downloads": 0,
+  "updatedAt": "2026-04-22T00:00:00.000Z"
+}
