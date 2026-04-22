@@ -14,9 +14,14 @@ from skill_catalog.core import build_registry, write_registry
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate skills registry JSON from source skills.")
     parser.add_argument(
-        "--base-url",
+        "--website-base-url",
         default="http://localhost:3000",
-        help="Base URL used to generate source/docs/download links",
+        help="Website base URL used when repo URL is not provided",
+    )
+    parser.add_argument(
+        "--repo-url",
+        default=None,
+        help="Optional GitHub repo URL used to generate source/docs/download links",
     )
     parser.add_argument(
         "--output",
@@ -37,7 +42,11 @@ def main() -> int:
     output_path = (repo_root / args.output).resolve()
 
     try:
-        registry = build_registry(repo_root, base_url=args.base_url)
+        registry = build_registry(
+            repo_root,
+            website_base_url=args.website_base_url,
+            repo_url=args.repo_url,
+        )
     except ValueError as error:
         print(str(error), file=sys.stderr)
         return 1

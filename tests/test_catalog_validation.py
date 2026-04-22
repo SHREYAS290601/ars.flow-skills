@@ -20,7 +20,11 @@ class CatalogValidationTests(unittest.TestCase):
 
     def test_registry_generation_contains_expected_skill_count(self) -> None:
         catalog_root = Path(__file__).resolve().parents[1]
-        registry = build_registry(catalog_root, base_url="http://localhost:3000", generated_at="2026-04-22T00:00:00Z")
+        registry = build_registry(
+            catalog_root,
+            website_base_url="http://localhost:3000",
+            generated_at="2026-04-22T00:00:00Z",
+        )
 
         self.assertEqual(registry["generatedAt"], "2026-04-22T00:00:00Z")
         self.assertEqual(len(registry["skills"]), 8)

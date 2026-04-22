@@ -36,6 +36,7 @@ From `skills-catalog/`:
 ```bash
 python3 scripts/validate_skills.py
 python3 scripts/generate_registry.py
+python3 scripts/generate_registry.py --repo-url https://github.com/SHREYAS290601/ars.flow-skills
 python3 scripts/generate_registry.py --sync-website ../website/public/registry/skills.json
 python3 scripts/list_skills.py
 python3 -m unittest discover -s tests
@@ -59,7 +60,13 @@ Every skill must be narrow, reusable, and verification-first. Each skill must in
 5. Run validation and tests.
 6. Regenerate `registry/skills.json`.
 
+## Public registry endpoint
+
+The published registry is available at:
+
+`https://raw.githubusercontent.com/SHREYAS290601/ars.flow-skills/main/registry/skills.json`
+
 ## Notes on URLs
 
-The registry generator sets `sourceUrl`, `docsUrl`, and `downloadUrl` from a configurable base URL.
-Default base URL is `http://localhost:3000` for local testing.
+- Without `--repo-url`, URLs point to local website routes (`http://localhost:3000` by default).
+- With `--repo-url`, URLs point to GitHub source/docs paths for each skill.

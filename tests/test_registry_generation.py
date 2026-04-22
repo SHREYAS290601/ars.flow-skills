@@ -15,7 +15,11 @@ from skill_catalog.core import build_registry, write_registry
 class RegistryGenerationTests(unittest.TestCase):
     def test_write_registry_creates_json_file(self) -> None:
         catalog_root = Path(__file__).resolve().parents[1]
-        registry = build_registry(catalog_root, base_url="http://localhost:3000", generated_at="2026-04-22T00:00:00Z")
+        registry = build_registry(
+            catalog_root,
+            website_base_url="http://localhost:3000",
+            generated_at="2026-04-22T00:00:00Z",
+        )
 
         with tempfile.TemporaryDirectory() as temp_dir:
             output = Path(temp_dir) / "registry" / "skills.json"

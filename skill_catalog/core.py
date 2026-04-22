@@ -351,12 +351,20 @@ def validate_catalog(catalog_root: Path) -> list[str]:
     return errors
 
 
-def _build_urls(base_url: str, slug: str) -> dict[str, str]:
-    trimmed = base_url.rstrip("/")
+def _build_urls(website_base_url: str, slug: str, repo_url: str | None = None) -> dict[str, str]:
+    website_trimmed = website_base_url.rstrip("/")
+    if repo_url:
+        repo_trimmed = repo_url.rstrip("/")
+        return {
+            "sourceUrl": f"{repo_trimmed}/tree/main/skills/{slug}",
+            "downloadUrl": f"{repo_trimmed}/tree/main/skills/{slug}",
+            "docsUrl": f"{repo_trimmed}/blob/main/skills/{slug}/SKILL.md",
+        }
+
     return {
-        "sourceUrl": f"{trimmed}/skills/{slug}/docs#source",
-        "downloadUrl": f"{trimmed}/api/download/{slug}",
-        "docsUrl": f"{trimmed}/skills/{slug}/docs",
+        "sourceUrl": f"{website_trimmed}/skills/{slug}/docs#source",
+        "downloadUrl": f"{website_trimmed}/api/download/{slug}",
+        "docsUrl": f"{website_trimmed}/skills/{slug}/docs",
     }
 
 
@@ -364,7 +372,12 @@ def _utc_timestamp() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
-def build_registry(catalog_root: Path, base_url: str, generated_at: str | None = None) -> dict[str, Any]:
+def build_registry(
+    catalog_root: Path,
+    website_base_url: str,
+    generated_at: str | None = None,
+    repo_url: str | None = None,
+) -> dict[str, Any]:
     records, errors = load_skill_records(catalog_root)
     if errors:
         message = "\n".join(errors)
@@ -373,7 +386,7 @@ def build_registry(catalog_root: Path, base_url: str, generated_at: str | None =
     output_skills: list[dict[str, Any]] = []
     for record in sorted(records, key=lambda item: item.slug):
         metadata = dict(record.metadata)
-        metadata.update(_build_urls(base_url=base_url, slug=record.slug))
+        metadata.update(_build_urls(website_base_url=website_base_url, slug=record.slug, repo_url=repo_url))
         output_skills.append(metadata)
 
     return {

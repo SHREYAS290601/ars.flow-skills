@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T19:18:04Z",
+  "generatedAt": "2026-04-22T19:26:39Z",
   "skills": [
     {
       "id": "skill-debug-incident-triage",
@@ -92,9 +92,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/debug-incident-triage/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/debug-incident-triage",
-      "docsUrl": "http://localhost:3000/skills/debug-incident-triage/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/debug-incident-triage",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/debug-incident-triage",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/debug-incident-triage/SKILL.md"
     },
     {
       "id": "skill-etl-reconciliation-check",
@@ -182,9 +182,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/etl-reconciliation-check/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/etl-reconciliation-check",
-      "docsUrl": "http://localhost:3000/skills/etl-reconciliation-check/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/etl-reconciliation-check",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/etl-reconciliation-check",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/etl-reconciliation-check/SKILL.md"
     },
     {
       "id": "skill-json-schema-enforcer",
@@ -282,9 +282,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/json-schema-enforcer/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/json-schema-enforcer",
-      "docsUrl": "http://localhost:3000/skills/json-schema-enforcer/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/json-schema-enforcer",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/json-schema-enforcer",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/json-schema-enforcer/SKILL.md"
     },
     {
       "id": "skill-migration-rollback-safety",
@@ -380,9 +380,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/migration-rollback-safety/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/migration-rollback-safety",
-      "docsUrl": "http://localhost:3000/skills/migration-rollback-safety/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/migration-rollback-safety",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/migration-rollback-safety",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/migration-rollback-safety/SKILL.md"
     },
     {
       "id": "skill-pr-change-risk-review",
@@ -476,9 +476,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/pr-change-risk-review/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/pr-change-risk-review",
-      "docsUrl": "http://localhost:3000/skills/pr-change-risk-review/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/pr-change-risk-review",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/pr-change-risk-review",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/pr-change-risk-review/SKILL.md"
     },
     {
       "id": "skill-repo-workflow-bootstrap",
@@ -572,9 +572,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/repo-workflow-bootstrap/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/repo-workflow-bootstrap",
-      "docsUrl": "http://localhost:3000/skills/repo-workflow-bootstrap/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/repo-workflow-bootstrap",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/repo-workflow-bootstrap",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/repo-workflow-bootstrap/SKILL.md"
     },
     {
       "id": "skill-secure-endpoint-review",
@@ -673,9 +673,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/secure-endpoint-review/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/secure-endpoint-review",
-      "docsUrl": "http://localhost:3000/skills/secure-endpoint-review/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/secure-endpoint-review",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/secure-endpoint-review",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/secure-endpoint-review/SKILL.md"
     },
     {
       "id": "skill-test-first-change-guardrail",
@@ -769,9 +769,9 @@
       ],
       "downloads": 0,
       "updatedAt": "2026-04-22T00:00:00.000Z",
-      "sourceUrl": "http://localhost:3000/skills/test-first-change-guardrail/docs#source",
-      "downloadUrl": "http://localhost:3000/api/download/test-first-change-guardrail",
-      "docsUrl": "http://localhost:3000/skills/test-first-change-guardrail/docs"
+      "sourceUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/test-first-change-guardrail",
+      "downloadUrl": "https://github.com/SHREYAS290601/ars.flow-skills/tree/main/skills/test-first-change-guardrail",
+      "docsUrl": "https://github.com/SHREYAS290601/ars.flow-skills/blob/main/skills/test-first-change-guardrail/SKILL.md"
     }
   ]
 }
