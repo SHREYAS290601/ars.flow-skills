@@ -6,11 +6,24 @@
   "longDescription": "Introduces deterministic build/test workflow baselines and validates required files for maintainable engineering operations.",
   "category": "repo-workflows",
   "categoryLabel": "Repo Workflow Bootstrap",
-  "tags": ["ci", "onboarding", "tooling"],
-  "languages": ["Shell", "YAML"],
-  "frameworks": ["GitHub Actions", "Make"],
+  "tags": [
+    "ci",
+    "onboarding",
+    "tooling"
+  ],
+  "languages": [
+    "Shell",
+    "YAML"
+  ],
+  "frameworks": [
+    "GitHub Actions",
+    "Make"
+  ],
   "reliabilityLevel": "medium",
-  "verificationTypes": ["lint/type checks", "manual review required"],
+  "verificationTypes": [
+    "lint/type checks",
+    "manual review required"
+  ],
   "riskLevel": "medium",
   "version": "0.1.0",
   "author": "ARS Platform",
@@ -47,6 +60,21 @@
       "type": "script",
       "name": "scripts/verify_pipeline_files.py",
       "description": "Checks for expected CI and command contract files."
+    },
+    {
+      "type": "reference",
+      "name": "references/repo-baseline.md",
+      "description": "Defines the minimum baseline workflow artifacts for a repository."
+    },
+    {
+      "type": "reference",
+      "name": "references/command-contract-template.md",
+      "description": "Template for canonical local/CI command contract."
+    },
+    {
+      "type": "reference",
+      "name": "references/migration-strategy.md",
+      "description": "Phased strategy for migrating legacy repos to the standard contract."
     }
   ],
   "idealUseCases": [

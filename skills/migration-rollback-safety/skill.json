@@ -6,11 +6,26 @@
   "longDescription": "Defines preflight and rollback-safe migration execution with deterministic gating and ownership for production-impacting changes.",
   "category": "migrations",
   "categoryLabel": "Migrations & Rollback Safety",
-  "tags": ["migration", "rollback", "database"],
-  "languages": ["SQL", "Shell", "Markdown"],
-  "frameworks": ["Alembic", "Flyway"],
+  "tags": [
+    "migration",
+    "rollback",
+    "database"
+  ],
+  "languages": [
+    "SQL",
+    "Shell",
+    "Markdown"
+  ],
+  "frameworks": [
+    "Alembic",
+    "Flyway"
+  ],
   "reliabilityLevel": "high",
-  "verificationTypes": ["integration tests", "manual review required", "reconciliation checks"],
+  "verificationTypes": [
+    "integration tests",
+    "manual review required",
+    "reconciliation checks"
+  ],
   "riskLevel": "high",
   "version": "0.1.0",
   "author": "ARS Ops",
@@ -47,6 +62,21 @@
       "type": "script",
       "name": "scripts/check_migration_plan.py",
       "description": "Checks that migration plans include preflight and rollback sections."
+    },
+    {
+      "type": "reference",
+      "name": "references/rollback-matrix-template.md",
+      "description": "Template for rollback trigger, owner, and action mapping."
+    },
+    {
+      "type": "reference",
+      "name": "references/preflight-check-catalog.md",
+      "description": "Recommended preflight checks by migration class."
+    },
+    {
+      "type": "reference",
+      "name": "references/staging-rehearsal-guide.md",
+      "description": "Procedure for forward/rollback rehearsal in staging."
     }
   ],
   "idealUseCases": [

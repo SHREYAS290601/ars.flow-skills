@@ -6,44 +6,76 @@ description: Triage incidents by clustering error signatures, ranking likely cau
 # Debug Incident Triage
 
 ## Scope
-Convert noisy failure evidence into an actionable triage report with probable causes and next diagnostic steps.
+Turn noisy incident evidence into a prioritized hypothesis list, concrete containment actions, and a verifiable next-check plan that can be executed quickly under on-call pressure.
 
 ## When to Use
-- Active incidents with repeated application errors.
-- CI/CD or runtime failures with large unstructured logs.
-- On-call handoffs that need concise, prioritized context.
+- Active production incidents with repeated error patterns.
+- CI/CD failures with high-volume unstructured logs.
+- Urgent handoffs where structured context is missing.
 
 ## When Not to Use
-- Postmortem writing after incident is fully resolved.
-- Issues with no log or telemetry evidence.
-- Changes that are clearly deterministic and already root-caused.
+- Final postmortem writing after root cause is confirmed.
+- Cases with no telemetry/log evidence.
+- Trivial deterministic failures already root-caused.
 
 ## Required Inputs
-- `incident_logs.txt`: relevant error and warning lines.
-- `service_context.md`: deployment and dependency context.
-- `recent_changes.md`: recent PRs or config changes.
+- `incident_logs.txt`: error/warn logs during incident window.
+- `service_context.md`: topology, dependencies, and recent deploys.
+- `recent_changes.md`: merged PRs/config changes in lookback window.
+- `impact_summary.md` (recommended): user/system impact signals.
 
 ## Expected Outputs
-- `triage_report.md` with ranked hypotheses.
-- `next_checks.md` with concrete commands and owners.
+- `triage_report.md`:
+  - ranked hypotheses
+  - confidence level
+  - supporting/refuting evidence
+- `next_checks.md`: concrete commands, owners, and ETA.
+- `containment_plan.md`: immediate blast-radius reduction actions.
 
 ## Workflow
-1. Collect and normalize error lines from logs.
-2. Group similar failures by signature.
-3. Rank hypotheses using frequency and recency.
-4. Correlate with recent changes and dependency events.
-5. Propose containment actions and verification steps.
-6. Update report as evidence confirms or rejects hypotheses.
+1. Normalize evidence.
+- Remove irrelevant noise.
+- Normalize log signatures for grouping.
+2. Cluster signals.
+- Group recurring signatures by normalized message.
+- Rank by frequency and timing.
+3. Correlate timeline.
+- Align error spikes with deploy/config/dependency changes.
+4. Build hypotheses.
+- State top plausible causes with confidence.
+- Include disconfirming checks for each hypothesis.
+5. Propose containment.
+- Recommend low-risk actions to reduce impact quickly.
+6. Execute and update.
+- Track check outcomes and update ranking after each result.
+7. Prepare handoff-ready output.
+- Ensure next on-call can continue without reconstructing context.
 
 ## Validation Strategy
-- Run `scripts/cluster_log_signatures.py` to group recurring errors.
-- Require each hypothesis to include confirming and disconfirming checks.
-- Track which checks were executed and observed outcomes.
+- Use `scripts/cluster_log_signatures.py` for deterministic grouping.
+- Require each hypothesis to include confirmation + refutation checks.
+- Track decision log to avoid repeated dead-end checks.
+- Re-rank hypotheses after each new evidence batch.
 
 ## Failure Modes
-- Logs are incomplete or truncated, hiding the primary trigger.
-- Frequency bias overweights noisy secondary symptoms.
-- Teams skip hypothesis invalidation and prematurely converge.
+- Incomplete logs hide root trigger.
+- Frequency bias overweights noisy secondary errors.
+- Team converges too quickly and skips hypothesis falsification.
+- Containment actions mask symptoms while root cause remains active.
 
 ## Examples
-- See `examples/example-run.md` for a deployment incident triage run.
+- `examples/example-run.md`: checkout incident triage example.
+- `examples/incident_logs.txt`: sample log stream for clustering.
+
+## Handoff Standard
+Every triage output should include:
+1. Incident state and impact.
+2. Top 3 hypotheses.
+3. Checks already executed.
+4. Checks pending with owners.
+5. Containment status.
+
+## Sub-Documentation
+- `references/triage-template.md`: standard report template.
+- `references/hypothesis-ranking.md`: confidence scoring guidance.
+- `references/containment-playbook.md`: safe containment action patterns.

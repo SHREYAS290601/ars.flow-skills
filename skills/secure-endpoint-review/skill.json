@@ -6,11 +6,24 @@
   "longDescription": "Combines static checks and manual review to enforce auth, validation, and data-handling controls in endpoint implementations.",
   "category": "security-review",
   "categoryLabel": "Security Review & Secure Defaults",
-  "tags": ["security", "api", "auth"],
-  "languages": ["Python", "TypeScript"],
-  "frameworks": ["FastAPI", "Express"],
+  "tags": [
+    "security",
+    "api",
+    "auth"
+  ],
+  "languages": [
+    "Python",
+    "TypeScript"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "Express"
+  ],
   "reliabilityLevel": "high",
-  "verificationTypes": ["static analysis", "manual review required"],
+  "verificationTypes": [
+    "static analysis",
+    "manual review required"
+  ],
   "riskLevel": "high",
   "version": "0.1.0",
   "author": "ARS Security",
@@ -52,6 +65,16 @@
       "type": "reference",
       "name": "references/review-template.md",
       "description": "Standardized security review output template."
+    },
+    {
+      "type": "reference",
+      "name": "references/owasp-mapping.md",
+      "description": "Maps common endpoint flaws to OWASP risk categories."
+    },
+    {
+      "type": "reference",
+      "name": "references/secure-defaults-checklist.md",
+      "description": "Operational secure-default checklist for endpoint reviews."
     }
   ],
   "idealUseCases": [

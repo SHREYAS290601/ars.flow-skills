@@ -6,11 +6,24 @@
   "longDescription": "Encodes a deterministic red-green workflow for behavior-changing code updates and requires regression evidence before merge.",
   "category": "test-first",
   "categoryLabel": "Test-First Code Changes",
-  "tags": ["testing", "regression", "quality"],
-  "languages": ["TypeScript", "Python"],
-  "frameworks": ["Vitest", "Pytest"],
+  "tags": [
+    "testing",
+    "regression",
+    "quality"
+  ],
+  "languages": [
+    "TypeScript",
+    "Python"
+  ],
+  "frameworks": [
+    "Vitest",
+    "Pytest"
+  ],
   "reliabilityLevel": "high",
-  "verificationTypes": ["unit tests", "integration tests"],
+  "verificationTypes": [
+    "unit tests",
+    "integration tests"
+  ],
   "riskLevel": "medium",
   "version": "0.1.0",
   "author": "ARS Labs",
@@ -47,6 +60,21 @@
       "type": "script",
       "name": "scripts/check_test_plan.py",
       "description": "Validates test-first plan sections."
+    },
+    {
+      "type": "reference",
+      "name": "references/checklist.md",
+      "description": "Compact execution checklist for test-first delivery."
+    },
+    {
+      "type": "reference",
+      "name": "references/test-design-patterns.md",
+      "description": "Deterministic test design patterns for reproducible behavior checks."
+    },
+    {
+      "type": "reference",
+      "name": "references/flaky-test-triage.md",
+      "description": "Playbook for identifying and remediating flaky tests."
     }
   ],
   "idealUseCases": [

@@ -6,44 +6,70 @@ description: Bootstrap repository-level build, test, and CI workflow conventions
 # Repo Workflow Bootstrap
 
 ## Scope
-Establish repeatable local and CI workflows so repositories have deterministic build and test expectations.
+Establish deterministic local and CI workflow conventions so every repository has a reproducible command contract and predictable quality gates.
 
 ## When to Use
-- New repositories with inconsistent developer setup.
-- Legacy repositories missing CI standards.
-- Team onboarding where baseline engineering controls are absent.
+- New repos with no shared engineering workflow.
+- Legacy repos with inconsistent tooling and weak CI.
+- Teams onboarding multiple contributors quickly.
 
 ## When Not to Use
-- Mature repos with stable conventions already enforced.
-- One-off scripts that are not shared or maintained.
-- Repositories intentionally frozen and not accepting active development.
+- Mature repos that already enforce stable conventions.
+- Repositories that are archived or no longer actively developed.
+- Experimental one-off code where governance is intentionally minimal.
 
 ## Required Inputs
-- `repo_layout`: current build/test files and language stack.
-- `required_checks`: mandatory quality gates for merge.
-- `ci_environment`: target CI platform assumptions.
+- `repo_layout`: existing files, package managers, and build/test tooling.
+- `required_checks`: organization-level quality gates.
+- `ci_environment`: target runner and constraints.
+- `language_matrix` (optional): multi-language repo execution expectations.
 
 ## Expected Outputs
-- `workflow_plan.md`: recommended local and CI command contract.
-- `bootstrap_patch.diff`: baseline scripts and config updates.
+- `workflow_plan.md`: canonical commands and ownership model.
+- `bootstrap_patch.diff`: scripts/config updates.
+- `adoption_notes.md`: migration steps for contributors.
 
 ## Workflow
-1. Detect current package manager and build toolchain.
-2. Define canonical commands (`install`, `lint`, `test`, `typecheck`, `build`).
-3. Standardize CI entrypoint and failure behavior.
-4. Add local scripts that mirror CI behavior.
-5. Verify new workflow files exist and are discoverable.
-6. Document maintenance expectations.
+1. Inventory current state.
+- Detect package manager(s), lockfiles, and script surfaces.
+- Detect current CI workflows and failure policies.
+2. Define canonical command contract.
+- `install`, `lint`, `typecheck`, `test`, `build`.
+- Document expected runtime and artifacts.
+3. Align local and CI execution.
+- Ensure CI calls the same commands as local workflow.
+- Remove hidden CI-only command branches when possible.
+4. Add baseline governance files.
+- README workflow instructions.
+- CI workflow file(s).
+- contributor or quality gate notes.
+5. Validate command contract.
+- Confirm required files exist.
+- Dry-run commands or command presence checks.
+6. Roll out and stabilize.
+- Document fallback path for legacy commands.
+- Track adoption issues and resolve command drift.
 
 ## Validation Strategy
-- Run `scripts/verify_pipeline_files.py` to confirm required workflow files exist.
-- Execute canonical commands in a dry run where possible.
-- Block adoption if command contract is ambiguous.
+- Use `scripts/verify_pipeline_files.py` for baseline file checks.
+- Require one-command quality gate path for CI and local.
+- Detect and fail multi-package-manager ambiguity unless explicitly allowed.
+- Run periodic audit for command drift.
 
 ## Failure Modes
-- Tooling mismatch across local and CI environments.
-- Multiple package managers cause nondeterministic lockfile behavior.
-- Missing docs lead to drift in command conventions.
+- Local commands diverge from CI over time.
+- Multiple lockfiles create nondeterministic installs.
+- CI workflow exists but does not block merge on failures.
+- Documentation exists but omits critical environment assumptions.
 
 ## Examples
-- See `examples/example-run.md` for a repo bootstrap audit and patch plan.
+- `examples/example-run.md`: repo audit and bootstrap plan example.
+
+## Rollout Guidance
+- Prefer incremental adoption: stabilize command contract first, then enforce strict gates.
+- For large legacy repos, use a transition period with deprecation dates.
+
+## Sub-Documentation
+- `references/repo-baseline.md`: minimum required workflow artifacts.
+- `references/command-contract-template.md`: template for standardized commands.
+- `references/migration-strategy.md`: phased rollout approach for legacy repos.

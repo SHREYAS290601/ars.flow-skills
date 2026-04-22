@@ -6,11 +6,24 @@
   "longDescription": "Provides deterministic risk scoring from diff metadata, then links high-risk changes to explicit mitigation and approval requirements.",
   "category": "pr-risk",
   "categoryLabel": "PR Review & Change Risk",
-  "tags": ["pr", "risk", "review"],
-  "languages": ["Markdown", "JSON"],
-  "frameworks": ["GitHub", "CI"],
+  "tags": [
+    "pr",
+    "risk",
+    "review"
+  ],
+  "languages": [
+    "Markdown",
+    "JSON"
+  ],
+  "frameworks": [
+    "GitHub",
+    "CI"
+  ],
   "reliabilityLevel": "medium",
-  "verificationTypes": ["static analysis", "manual review required"],
+  "verificationTypes": [
+    "static analysis",
+    "manual review required"
+  ],
   "riskLevel": "medium",
   "version": "0.1.0",
   "author": "ARS Labs",
@@ -47,6 +60,21 @@
       "type": "script",
       "name": "scripts/score_risk.py",
       "description": "Computes deterministic risk score from diff metrics."
+    },
+    {
+      "type": "reference",
+      "name": "references/scoring-rubric.md",
+      "description": "Baseline scoring rubric for PR risk estimation."
+    },
+    {
+      "type": "reference",
+      "name": "references/mitigation-catalog.md",
+      "description": "Mitigation options mapped by risk severity."
+    },
+    {
+      "type": "reference",
+      "name": "references/manual-override-policy.md",
+      "description": "Governance policy for manual risk score overrides."
     }
   ],
   "idealUseCases": [

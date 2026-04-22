@@ -6,11 +6,23 @@
   "longDescription": "Validates AI-generated JSON against explicit contracts with deterministic checks for required keys, type safety, allowed values, and forbidden fields.",
   "category": "structured-output",
   "categoryLabel": "Structured Output & Schema Enforcement",
-  "tags": ["json", "schema", "validation"],
-  "languages": ["JSON", "Python"],
-  "frameworks": ["Custom contract checker"],
+  "tags": [
+    "json",
+    "schema",
+    "validation"
+  ],
+  "languages": [
+    "JSON",
+    "Python"
+  ],
+  "frameworks": [
+    "Custom contract checker"
+  ],
   "reliabilityLevel": "high",
-  "verificationTypes": ["schema validation", "lint/type checks"],
+  "verificationTypes": [
+    "schema validation",
+    "lint/type checks"
+  ],
   "riskLevel": "medium",
   "version": "0.1.0",
   "author": "ARS Labs",
@@ -52,6 +64,16 @@
       "type": "reference",
       "name": "references/contract-format.md",
       "description": "Defines the contract JSON format used by the validator."
+    },
+    {
+      "type": "reference",
+      "name": "references/edge-cases.md",
+      "description": "Covers nullability, enum drift, and nested-structure edge cases."
+    },
+    {
+      "type": "reference",
+      "name": "references/repair-playbook.md",
+      "description": "Defines deterministic repair ordering and retry policy."
     }
   ],
   "idealUseCases": [

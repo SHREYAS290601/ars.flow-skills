@@ -6,11 +6,24 @@
   "longDescription": "Compares source and target ETL summaries with deterministic checks to catch data-loss and transformation drift before release.",
   "category": "etl-validation",
   "categoryLabel": "ETL & Data Validation",
-  "tags": ["etl", "data-quality", "reconciliation"],
-  "languages": ["SQL", "Python"],
-  "frameworks": ["Airflow", "dbt"],
+  "tags": [
+    "etl",
+    "data-quality",
+    "reconciliation"
+  ],
+  "languages": [
+    "SQL",
+    "Python"
+  ],
+  "frameworks": [
+    "Airflow",
+    "dbt"
+  ],
   "reliabilityLevel": "high",
-  "verificationTypes": ["reconciliation checks", "integration tests"],
+  "verificationTypes": [
+    "reconciliation checks",
+    "integration tests"
+  ],
   "riskLevel": "high",
   "version": "0.1.0",
   "author": "ARS Data",
@@ -41,6 +54,21 @@
       "type": "script",
       "name": "scripts/reconcile_summaries.py",
       "description": "Compares source and target summary JSON metrics."
+    },
+    {
+      "type": "reference",
+      "name": "references/reconciliation-policy.md",
+      "description": "Policy thresholds and blocking criteria for reconciliation checks."
+    },
+    {
+      "type": "reference",
+      "name": "references/window-alignment-guide.md",
+      "description": "Guide to prevent false mismatches from window skew."
+    },
+    {
+      "type": "reference",
+      "name": "references/mismatch-triage-playbook.md",
+      "description": "Step-by-step triage flow for reconciliation mismatches."
     }
   ],
   "idealUseCases": [

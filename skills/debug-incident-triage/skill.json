@@ -6,11 +6,23 @@
   "longDescription": "Structures incident debugging by grouping recurring log signatures and producing prioritized next-step diagnostics for on-call teams.",
   "category": "debug-triage",
   "categoryLabel": "Debugging & Incident Triage",
-  "tags": ["incident", "debugging", "oncall"],
-  "languages": ["Text", "Python"],
-  "frameworks": ["Log pipelines"],
+  "tags": [
+    "incident",
+    "debugging",
+    "oncall"
+  ],
+  "languages": [
+    "Text",
+    "Python"
+  ],
+  "frameworks": [
+    "Log pipelines"
+  ],
   "reliabilityLevel": "medium",
-  "verificationTypes": ["reconciliation checks", "manual review required"],
+  "verificationTypes": [
+    "reconciliation checks",
+    "manual review required"
+  ],
   "riskLevel": "high",
   "version": "0.1.0",
   "author": "ARS SRE",
@@ -47,6 +59,21 @@
       "type": "script",
       "name": "scripts/cluster_log_signatures.py",
       "description": "Groups recurring error signatures by normalized log message."
+    },
+    {
+      "type": "reference",
+      "name": "references/triage-template.md",
+      "description": "Template for consistent incident triage reports."
+    },
+    {
+      "type": "reference",
+      "name": "references/hypothesis-ranking.md",
+      "description": "Confidence ranking guidance for triage hypotheses."
+    },
+    {
+      "type": "reference",
+      "name": "references/containment-playbook.md",
+      "description": "Safe immediate containment action patterns."
     }
   ],
   "idealUseCases": [

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T19:26:39Z",
+  "generatedAt": "2026-04-22T19:40:04Z",
   "skills": [
     {
       "id": "skill-debug-incident-triage",
@@ -62,6 +62,21 @@
           "type": "script",
           "name": "scripts/cluster_log_signatures.py",
           "description": "Groups recurring error signatures by normalized log message."
+        },
+        {
+          "type": "reference",
+          "name": "references/triage-template.md",
+          "description": "Template for consistent incident triage reports."
+        },
+        {
+          "type": "reference",
+          "name": "references/hypothesis-ranking.md",
+          "description": "Confidence ranking guidance for triage hypotheses."
+        },
+        {
+          "type": "reference",
+          "name": "references/containment-playbook.md",
+          "description": "Safe immediate containment action patterns."
         }
       ],
       "idealUseCases": [
@@ -152,6 +167,21 @@
           "type": "script",
           "name": "scripts/reconcile_summaries.py",
           "description": "Compares source and target summary JSON metrics."
+        },
+        {
+          "type": "reference",
+          "name": "references/reconciliation-policy.md",
+          "description": "Policy thresholds and blocking criteria for reconciliation checks."
+        },
+        {
+          "type": "reference",
+          "name": "references/window-alignment-guide.md",
+          "description": "Guide to prevent false mismatches from window skew."
+        },
+        {
+          "type": "reference",
+          "name": "references/mismatch-triage-playbook.md",
+          "description": "Step-by-step triage flow for reconciliation mismatches."
         }
       ],
       "idealUseCases": [
@@ -252,6 +282,16 @@
           "type": "reference",
           "name": "references/contract-format.md",
           "description": "Defines the contract JSON format used by the validator."
+        },
+        {
+          "type": "reference",
+          "name": "references/edge-cases.md",
+          "description": "Covers nullability, enum drift, and nested-structure edge cases."
+        },
+        {
+          "type": "reference",
+          "name": "references/repair-playbook.md",
+          "description": "Defines deterministic repair ordering and retry policy."
         }
       ],
       "idealUseCases": [
@@ -350,6 +390,21 @@
           "type": "script",
           "name": "scripts/check_migration_plan.py",
           "description": "Checks that migration plans include preflight and rollback sections."
+        },
+        {
+          "type": "reference",
+          "name": "references/rollback-matrix-template.md",
+          "description": "Template for rollback trigger, owner, and action mapping."
+        },
+        {
+          "type": "reference",
+          "name": "references/preflight-check-catalog.md",
+          "description": "Recommended preflight checks by migration class."
+        },
+        {
+          "type": "reference",
+          "name": "references/staging-rehearsal-guide.md",
+          "description": "Procedure for forward/rollback rehearsal in staging."
         }
       ],
       "idealUseCases": [
@@ -446,6 +501,21 @@
           "type": "script",
           "name": "scripts/score_risk.py",
           "description": "Computes deterministic risk score from diff metrics."
+        },
+        {
+          "type": "reference",
+          "name": "references/scoring-rubric.md",
+          "description": "Baseline scoring rubric for PR risk estimation."
+        },
+        {
+          "type": "reference",
+          "name": "references/mitigation-catalog.md",
+          "description": "Mitigation options mapped by risk severity."
+        },
+        {
+          "type": "reference",
+          "name": "references/manual-override-policy.md",
+          "description": "Governance policy for manual risk score overrides."
         }
       ],
       "idealUseCases": [
@@ -542,6 +612,21 @@
           "type": "script",
           "name": "scripts/verify_pipeline_files.py",
           "description": "Checks for expected CI and command contract files."
+        },
+        {
+          "type": "reference",
+          "name": "references/repo-baseline.md",
+          "description": "Defines the minimum baseline workflow artifacts for a repository."
+        },
+        {
+          "type": "reference",
+          "name": "references/command-contract-template.md",
+          "description": "Template for canonical local/CI command contract."
+        },
+        {
+          "type": "reference",
+          "name": "references/migration-strategy.md",
+          "description": "Phased strategy for migrating legacy repos to the standard contract."
         }
       ],
       "idealUseCases": [
@@ -643,6 +728,16 @@
           "type": "reference",
           "name": "references/review-template.md",
           "description": "Standardized security review output template."
+        },
+        {
+          "type": "reference",
+          "name": "references/owasp-mapping.md",
+          "description": "Maps common endpoint flaws to OWASP risk categories."
+        },
+        {
+          "type": "reference",
+          "name": "references/secure-defaults-checklist.md",
+          "description": "Operational secure-default checklist for endpoint reviews."
         }
       ],
       "idealUseCases": [
@@ -739,6 +834,21 @@
           "type": "script",
           "name": "scripts/check_test_plan.py",
           "description": "Validates test-first plan sections."
+        },
+        {
+          "type": "reference",
+          "name": "references/checklist.md",
+          "description": "Compact execution checklist for test-first delivery."
+        },
+        {
+          "type": "reference",
+          "name": "references/test-design-patterns.md",
+          "description": "Deterministic test design patterns for reproducible behavior checks."
+        },
+        {
+          "type": "reference",
+          "name": "references/flaky-test-triage.md",
+          "description": "Playbook for identifying and remediating flaky tests."
         }
       ],
       "idealUseCases": [
